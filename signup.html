@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign Up - Create Account</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #9acd32 0%, #7ab82d 100%);
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .bg-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        animation: float 15s infinite ease-in-out;
+      }
+
+      .bg-circle:nth-child(1) {
+        width: 300px;
+        height: 300px;
+        top: -100px;
+        left: -100px;
+        animation-delay: 0s;
+      }
+
+      .bg-circle:nth-child(2) {
+        width: 200px;
+        height: 200px;
+        bottom: -50px;
+        right: -50px;
+        animation-delay: 2s;
+      }
+
+      .bg-circle:nth-child(3) {
+        width: 150px;
+        height: 150px;
+        top: 50%;
+        right: 10%;
+        animation-delay: 4s;
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-30px) rotate(180deg);
+        }
+      }
+
+      .signup-container {
+        position: relative;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        padding: 40px 40px;
+        width: 100%;
+        max-width: 500px;
+        backdrop-filter: blur(10px);
+        animation: slideIn 0.6s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .signup-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .signup-header h1 {
+        color: #333;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .signup-header p {
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .form-label {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+
+      .form-control {
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 12px 15px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: #9acd32;
+        box-shadow: 0 0 0 0.2rem rgba(154, 205, 50, 0.15);
+      }
+
+      .btn-signup {
+        background: linear-gradient(135deg, #9acd32 0%, #7ab82d 100%);
+        border: none;
+        border-radius: 10px;
+        padding: 14px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        width: 100%;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn-signup:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(154, 205, 50, 0.4);
+      }
+
+      .btn-signup:active {
+        transform: translateY(0);
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 25px 0;
+        color: #999;
+        font-size: 0.85rem;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .divider span {
+        padding: 0 15px;
+      }
+
+      .login-link {
+        text-align: center;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .login-link a {
+        color: #9acd32;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .login-link a:hover {
+        color: #7ab82d;
+      }
+
+      .password-requirements {
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 5px;
+        padding-left: 5px;
+      }
+
+      .form-check-label {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .form-check-label a {
+        color: #9acd32;
+        text-decoration: none;
+      }
+
+      .form-check-label a:hover {
+        color: #7ab82d;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+
+    <div class="signup-container">
+      <div class="signup-header">
+        <h1>Create Account</h1>
+        <p>Sign up to get started</p>
+      </div>
+
+      <form id="signupForm">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" placeholder="Enter a unique username" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Create a password" required>
+          <div class="password-requirements">
+            Must be at least 8 characters long
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter your password" required>
+        </div>
+
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+          <label class="form-check-label" for="agreeTerms">
+            I agree to the <a href="#">Terms & Conditions</a>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-signup">Create Account</button>
+      </form>
+
+      <div class="divider">
+        <span>OR</span>
+      </div>
+
+      <div class="login-link">
+        Already have an account? <a href="login.html">Login</a>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('signupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const email = document.getElementById('email').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const agreeTerms = document.getElementById('agreeTerms').checked;
+
+        if (password.length < 8) {
+          alert('Password must be at least 8 characters long!');
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          alert('Passwords do not match!');
+          return;
+        }
+
+        if (!agreeTerms) {
+          alert('Please agree to the Terms & Conditions');
+          return;
+        }
+
+        const userData = {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          username: username,
+          password: password
+        };
+
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+        alert('Account created successfully! Redirecting to portfolio...');
+
+        window.location.href = 'Portfolio.html';
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
