@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kendrick Arthur Comcom - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container-custom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      /* Header Section */
+      .header-section {
+        background: white;
+        border-radius: 12px;
+        padding: 40px;
+        margin-bottom: 24px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .profile-image {
+        width: 140px;
+        height: 140px;
+        border-radius: 12px;
+        object-fit: cover;
+        border: 3px solid #f0f0f0;
+      }
+
+      .header-info h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 4px;
+      }
+
+      .header-info .pronouns {
+        color: #666;
+        font-size: 1rem;
+        font-weight: 400;
+      }
+
+      .header-info .role {
+        font-size: 1.1rem;
+        color: #333;
+        margin: 8px 0;
+        font-weight: 500;
+      }
+
+      .header-info .location {
+        color: #666;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .university-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .university-logo img {
+        width: 60px;
+        height: 60px;
+      }
+
+      /* Social Links */
+      .social-links {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        background: #f8f9fa;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+      }
+
+      .social-link:hover {
+        background: #e9ecef;
+        border-color: #ccc;
+      }
+
+      /* Content Grid */
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 24px;
+      }
+
+      @media (max-width: 992px) {
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .header-section {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      /* Card Styles */
+      .card-section {
+        background: white;
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 24px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+
+      .card-section h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .card-section h2::before {
+        content: '';
+        font-size: 1.2rem;
+      }
+
+      /* Experience */
+      .experience-item {
+        padding: 20px 0;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .experience-item:last-child {
+        border-bottom: none;
+      }
+
+      .experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 8px;
+      }
+
+      .experience-title {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+
+      .experience-date {
+        font-size: 0.9rem;
+        color: #666;
+        white-space: nowrap;
+      }
+
+      .experience-company {
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+      }
+
+      .experience-description {
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      /* Tech Stack */
+      .tech-category {
+        margin-bottom: 24px;
+      }
+
+      .tech-category h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 12px;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tech-tag {
+        padding: 8px 16px;
+        background: #f8f9fa;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        color: #333;
+        font-weight: 500;
+      }
+
+      /* Projects */
+      .project-item {
+        padding: 20px 0;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .project-item:last-child {
+        border-bottom: none;
+      }
+
+      .project-title {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+      }
+
+      .project-description {
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .view-all {
+        color: #1a1a1a;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        float: right;
+      }
+
+      .view-all:hover {
+        color: #666;
+      }
+
+      /* Hobbies */
+      .hobby-item {
+        margin-bottom: 20px;
+      }
+
+      .hobby-item h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+      }
+
+      .hobby-item p {
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      /* Certifications */
+      .cert-item {
+        padding: 16px 0;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .cert-item:last-child {
+        border-bottom: none;
+      }
+
+      .cert-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 4px;
+      }
+
+      .cert-institution {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      /* Icons */
+      .icon {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-custom">
+      <!-- Header Section -->
+      <div class="header-section">
+        <div class="header-left">
+          <img src="pfp.jpg" alt="Profile Picture" class="profile-image">
+          <div class="header-info">
+            <h1>Kendrick Arthur C. Comcom Jr. <span class="pronouns">He/Him</span></h1>
+            <div class="role">Web Developer</div>
+            <div class="location">
+              <span>📍</span> Davao City, Philippines
+            </div>
+            <div class="social-links">
+              <a href="/cdn-cgi/l/email-protection#78131d161c0a111b13561b17151b1715381d00191508141d561b1715" class="social-link">
+                <span>✉️</span> <span class="__cf_email__" data-cfemail="0c676962687e656f67226f63616f63614c69746d617c6069226f6361">[email&#160;protected]</span>
+              </a>
+              <a href="#" class="social-link">
+                <span>💼</span> LinkedIn
+              </a>
+              <a href="#" class="social-link">
+                <span>💻</span> GitHub
+              </a>
+              <a href="#" class="social-link">
+                <span>📷</span> Instagram
+              </a>
+              <a href="#" class="social-link">
+                <span>👤</span> Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="university-logo">
+          <span>🎓 University of Mindanao</span>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="content-grid">
+        <!-- Left Column -->
+        <div class="left-column">
+          <!-- About Me -->
+          <div class="card-section">
+            <h2>👤 About Me</h2>
+            <p style="color: #555; line-height: 1.7;">
+            I am Kendrick Arthur C. Comcom Jr. currently living in Davao studying for a bachelor of computer science degree. I want to learn different types of code and I want to explore more about computers.
+            </p>
+            <p style="color: #555; line-height: 1.7; margin-top: 16px;">
+          </div>
+
+          <!-- Experience -->
+          <div class="card-section">
+            <h2>💼 Experience</h2>
+            
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="experience-title">Web Developer (Student)</div>
+                <div class="experience-date">2024 - Present</div>
+              </div>
+              <div class="experience-company">Personal Projects</div>
+              <div class="experience-description">
+                I developed a custom personal landing page using HTML and CSS for structured, responsive design, integrated with JavaScript to create interactive user elements and dynamic styling.
+              </div>
+            </div>
+
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="experience-title">Computer Science Student</div>
+                <div class="experience-date">2023 - Present</div>
+              </div>
+              <div class="experience-company">University of Mindanao</div>
+              <div class="experience-description">
+                Pursuing a Bachelor of Computer Science degree, gaining foundational knowledge in programming, algorithms, data structures, and software development principles.
+              </div>
+            </div>
+          </div>
+
+          <!-- Hobbies -->
+          <div class="card-section">
+            <h2>🎯 Hobbies</h2>
+            
+            <div class="hobby-item">
+              <h3>Tech & Learning</h3>
+              <p>I'm a tech enthusiast who loves exploring new technologies and learning new programming languages. I enjoy staying updated with the latest trends in the tech industry and constantly improving my skills.</p>
+            </div>
+
+            <div class="hobby-item">
+              <h3>Sports & Gaming</h3>
+              <p>I love playing sports like badminton, basketball, rugby, and other sports stuff. Related to gaming, I love playing RPG and FPS games, so technically I'm a nerd gamer.</p>
+            </div>
+
+            <div class="hobby-item">
+              <h3>Music & Movies</h3>
+              <p>I'm a huge, huge fan of music and movies. I'm a huge music and movie lover. I have a wide range of knowledge about music & movies, vintage or new, I know that because I grew up in a family that loved watching TV shows, especially movies and songs, because many people in our family sang.</p>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+          <!-- Tech Stack -->
+          <div class="card-section">
+            <h2>⚙️ Tech Stack</h2>
+            
+            <div class="tech-category">
+              <h3>Frontend</h3>
+              <div class="tech-tags">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">Bootstrap</span>
+                <span class="tech-tag">Responsive Design</span>
+              </div>
+            </div>
+
+            <div class="tech-category">
+              <h3>Backend</h3>
+              <div class="tech-tags">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Python</span>
+              </div>
+            </div>
+
+            <div class="tech-category">
+              <h3>Developer Tools</h3>
+              <div class="tech-tags">
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">GitHub</span>
+                <span class="tech-tag">VS Code</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Projects -->
+          <div class="card-section">
+            <h2>📂 Recent Projects</h2>
+            <a href="#" class="view-all">View All ></a>
+            <div style="clear: both; padding-top: 12px;">
+              <div class="project-item">
+                <div class="project-title">Portfolio Website</div>
+                <div class="project-description">
+                  A responsive personal portfolio website showcasing my skills, projects, and experience. Built with HTML, CSS, Bootstrap, and JavaScript.
+                </div>
+              </div>
+
+              <div class="project-item">
+                <div class="project-title">Login & Signup System</div>
+                <div class="project-description">
+                  A functional authentication system with login and signup pages. Features form validation, local storage, and responsive design.
+                </div>
+              </div>
+
+              <div class="project-item">
+                <div class="project-title">Landing Page Templates</div>
+                <div class="project-description">
+                  Collection of modern, responsive landing page templates for various use cases. Focused on clean design and user experience.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-stati
